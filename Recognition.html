@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Recognition - ACRP Atlanta City Roleplay ERLC</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0b0f1a 0%, #1a1d23 50%, #0b0f1a 100%);
+  color: #e5e7eb;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* HEADER */
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 50px;
+  width: auto;
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.back-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #DC143C;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-link:hover {
+  color: #B22222;
+}
+
+header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #ffffff, #DC143C, #b5bac1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideUp 1s ease-out 0.2s both;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+header p {
+  color: #9ca3af;
+  max-width: 600px;
+  margin: auto;
+  font-weight: 300;
+  animation: slideUp 1s ease-out 0.4s both;
+}
+
+/* SECTIONS */
+.recognition-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px 20px 60px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  animation: slideUp 1s ease-out 0.3s both;
+}
+
+.section-title i {
+  font-size: 28px;
+  color: #DC143C;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  color: #9ca3af;
+  font-size: 16px;
+  margin-bottom: 35px;
+  padding-left: 43px;
+  animation: slideUp 1s ease-out 0.4s both;
+}
+
+/* WEEK CARD */
+.week-card {
+  background: rgba(17, 24, 39, 0.95);
+  border-radius: 24px;
+  padding: 45px 40px;
+  border: 1px solid rgba(31, 41, 55, 0.5);
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.week-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #DC143C, #B22222, #FF4500);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.week-card:hover::before {
+  transform: scaleX(1);
+}
+
+.week-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(220, 20, 60, 0.3);
+  box-shadow: 0 25px 50px rgba(220, 20, 60, 0.25);
+}
+
+/* AVATAR PLACEHOLDER */
+.avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.15), rgba(178, 34, 34, 0.1));
+  border: 3px solid rgba(220, 20, 60, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.avatar-placeholder::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(220, 20, 60, 0.2), transparent);
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.week-card:hover .avatar-placeholder::before {
+  opacity: 1;
+}
+
+.avatar-placeholder i {
+  font-size: 56px;
+  color: #DC143C;
+  transition: all 0.3s ease;
+}
+
+.week-card:hover .avatar-placeholder i {
+  transform: scale(1.1);
+  animation: iconPulse 1s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
+}
+
+/* AVATAR IMAGE - Displayed when image link is provided */
+.avatar-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* When image is present, show it and hide icon via opacity */
+.avatar-placeholder.has-image i {
+  opacity: 0;
+}
+
+.avatar-placeholder.has-image .avatar-image {
+  opacity: 1;
+}
+
+.week-card:hover .avatar-placeholder.has-image i {
+  animation: none;
+  transform: scale(1);
+}
+
+/* WEEK INFO */
+.week-info {
+  flex: 1;
+}
+
+.week-info h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.week-info .username {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.week-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(178, 34, 34, 0.1));
+  border-radius: 25px;
+  color: #DC143C;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 18px;
+  border: 1px solid rgba(220, 20, 60, 0.2);
+}
+
+.week-role i {
+  font-size: 14px;
+}
+
+.week-reason {
+  font-size: 15px;
+  color: #9ca3af;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.week-reason i {
+  color: #DC143C;
+  margin-right: 8px;
+}
+
+/* MONTH SECTION */
+.month-section {
+  margin-top: 70px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.month-card {
+  background: rgba(17, 24, 39, 0.95);
+  border-radius: 24px;
+  padding: 50px 45px;
+  border: 1px solid rgba(31, 41, 55, 0.5);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+.month-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+  animation: monthGlow 4s ease-in-out infinite;
+}
+
+@keyframes monthGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.month-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700, #FFA500, #DC143C);
+}
+
+.month-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(220, 20, 60, 0.15));
+  border-radius: 30px;
+  color: #FFD700;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: badgeShine 3s ease-in-out infinite;
+}
+
+@keyframes badgeShine {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
+}
+
+.month-badge i {
+  font-size: 18px;
+}
+
+.month-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(220, 20, 60, 0.1));
+  border: 4px solid rgba(255, 215, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  animation: avatarFloat 3s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.month-avatar::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  animation: avatarRing 2s ease-in-out infinite;
+}
+
+@keyframes avatarRing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0; }
+}
+
+.month-avatar i {
+  font-size: 64px;
+  color: #FFD700;
+  transition: all 0.3s ease;
+}
+
+.month-card:hover .month-avatar i {
+  transform: rotate(360deg) scale(1.1);
+  animation: none;
+}
+
+.month-card:hover .month-avatar {
+  animation: none;
+  transform: scale(1.05);
+}
+
+/* MONTH AVATAR IMAGE - Displayed when image link is provided */
+.month-avatar .avatar-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* When image is present, show it and hide icon via opacity */
+.month-avatar.has-image i {
+  opacity: 0;
+}
+
+.month-avatar.has-image .avatar-image {
+  opacity: 1;
+}
+
+.month-card:hover .month-avatar.has-image i {
+  transform: none;
+}
+
+.month-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.month-card .username {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.month-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.1));
+  border-radius: 25px;
+  color: #60a5fa;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.month-role i {
+  font-size: 14px;
+}
+
+.month-reason {
+  font-size: 15px;
+  color: #9ca3af;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+.month-reason i {
+  color: #FFD700;
+  margin-right: 8px;
+}
+
+/* DECORATIVE STARS */
+.star {
+  position: absolute;
+  color: rgba(255, 215, 0, 0.3);
+  font-size: 12px;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.star:nth-child(1) { top: 20px; left: 30px; animation-delay: 0s; }
+.star:nth-child(2) { top: 40px; right: 40px; animation-delay: 0.5s; }
+.star:nth-child(3) { bottom: 30px; left: 50px; animation-delay: 1s; }
+.star:nth-child(4) { bottom: 20px; right: 30px; animation-delay: 1.5s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 14px;
+  background: rgba(11, 15, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 20px 20px;
+  }
+
+  .logo {
+    height: 40px;
+    top: 10px;
+    left: 10px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .back-link {
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+  }
+
+  .week-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 35px 25px;
+  }
+
+  .section-title {
+    justify-content: center;
+  }
+
+  .section-subtitle {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .week-info h3 {
+    justify-content: center;
+  }
+
+  .week-reason {
+    padding-left: 0;
+  }
+
+  .avatar-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .avatar-placeholder i {
+    font-size: 48px;
+  }
+
+  .month-card {
+    padding: 40px 25px;
+  }
+
+  .month-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .month-avatar i {
+    font-size: 56px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back-link">
+    <i class="fas fa-arrow-left"></i> Return Home
+  </a>
+<img src="Acrp Logo.png" alt="ACRP Logo" class="logo">
+  <h1>Staff Recognition</h1>
+  <p>Honoring our exceptional team members who go above and beyond for the community.</p>
+</header>
+
+<!-- STAFF OF THE WEEK -->
+<section class="recognition-section">
+  <div class="section-title">
+    <i class="fas fa-trophy"></i>
+    <h2>Staff of the Week</h2>
+  </div>
+  <p class="section-subtitle">Recognizing outstanding effort and dedication this week.</p>
+
+  <div class="week-card">
+    <div class="avatar-placeholder" data-image="https://cdn.discordapp.com/avatars/1446143206273187924/82133b9fd72979165fb4f3158344f80e.png">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="week-info">
+      <h3>ColdDiamond</h3>
+      <div class="username">ItssMrSkittles (@reapernevercaughtlakin123)</div>
+      <div class="week-role">
+        <i class="fas fa-user-shield"></i>
+         Director / 𝘼𝘾𝙍𝙋 | Board Of Directors
+      </div>
+      <div class="week-reason">
+        <i class="fas fa-quote-left"></i>
+        Awarded for exceptional activity, professionalism, and unwavering support to the community throughout the week. Your dedication truly makes a difference!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF OF THE MONTH -->
+<section class="recognition-section month-section">
+  <div class="section-title">
+    <i class="fas fa-crown"></i>
+    <h2>Staff of the Month</h2>
+  </div>
+  <p class="section-subtitle">Honoring long-term impact, consistent leadership, and remarkable dedication.</p>
+
+  <div class="month-card">
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+    <i class="fas fa-star star"></i>
+
+    <div class="month-badge">
+      <i class="fas fa-award"></i>
+      Staff of the Month
+    </div>
+
+    <div class="month-avatar" data-image="https://cdn.discordapp.com/avatars/853879284083195904/56663c01263bd06d9d47e1e46b3b4500.png">
+      <i class="fas fa-user-tie"></i>
+    </div>
+
+    <h3>Hamborgor</h3>
+    <div class="username">Hamborgor (@butterfingers9782)</div>
+    <div class="month-role">
+      <i class="fas fa-user-shield"></i>
+   Assistant Director / 𝘼𝘾𝙍𝙋 | Board Of Directors
+    </div>
+
+    <div class="month-reason">
+      <i class="fas fa-quote-left"></i>
+      This exceptional team member has gone above and beyond all month, demonstrating outstanding leadership, unwavering reliability, and genuine dedication to both the team and the entire community. Your impact is truly appreciated!
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 ACRP Atlanta City Roleplay ERLC</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle avatar images - check for data-image attribute and display image if present
+  const avatarPlaceholders = document.querySelectorAll('.avatar-placeholder');
+  
+  avatarPlaceholders.forEach(function(placeholder) {
+    const imageUrl = placeholder.getAttribute('data-image');
+    if (imageUrl) {
+      placeholder.classList.add('has-image');
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      img.alt = 'Avatar';
+      img.className = 'avatar-image';
+      placeholder.appendChild(img);
+    }
+  });
+  
+  // Handle month avatar images
+  const monthAvatars = document.querySelectorAll('.month-avatar');
+  
+  monthAvatars.forEach(function(avatar) {
+    const imageUrl = avatar.getAttribute('data-image');
+    if (imageUrl) {
+      avatar.classList.add('has-image');
+      const img = document.createElement('img');
+      img.src = imageUrl;
+      img.alt = 'Avatar';
+      img.className = 'avatar-image';
+      avatar.appendChild(img);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+

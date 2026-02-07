@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACRP Staff - Atlanta City Roleplay ERLC</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0b0f1a 0%, #1a1d23 50%, #0b0f1a 100%);
+  color: #e5e7eb;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* HEADER */
+header {
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 50px;
+  width: auto;
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.back-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #DC143C;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #B22222;
+}
+
+header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #ffffff, #DC143C, #b5bac1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideUp 1s ease-out 0.2s both;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+header p {
+  color: #9ca3af;
+  max-width: 600px;
+  margin: auto;
+  font-weight: 300;
+  animation: slideUp 1s ease-out 0.4s both;
+}
+
+/* STAFF SECTION */
+.staff-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px 20px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.staff-card {
+  background: rgba(17, 24, 39, 0.9);
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid rgba(31, 41, 55, 0.5);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: calc(var(--i) * 0.2s);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.staff-card:nth-child(1) { --i: 1; }
+.staff-card:nth-child(2) { --i: 2; }
+.staff-card:nth-child(3) { --i: 3; }
+.staff-card:nth-child(4) { --i: 4; }
+.staff-card:nth-child(5) { --i: 5; }
+
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.staff-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #DC143C, #B22222);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.staff-card:hover::before {
+  transform: scaleX(1);
+}
+
+.staff-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(220, 20, 60, 0.3);
+  box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3);
+}
+
+/* PROFILE */
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.avatar:hover img {
+  transform: scale(1.1);
+}
+
+.staff-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.staff-role {
+  font-size: 14px;
+  color: #DC143C;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.staff-role i {
+  font-size: 16px;
+}
+
+.staff-desc {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 14px;
+  background: rgba(11, 15, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 20px 20px;
+  }
+
+  .logo {
+    height: 40px;
+    top: 10px;
+    left: 10px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .staff-wrapper {
+    padding: 20px 10px 60px;
+    grid-template-columns: 1fr;
+  }
+
+  .staff-card {
+    padding: 24px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return Home</a>
+<img src="Acrp Logo.png" alt="ACRP Logo" class="logo">
+  <h1>Meet The Staff</h1>
+  <p>The team responsible for leadership, moderation, and keeping everything running smoothly.</p>
+</header>
+
+<section class="staff-wrapper">
+
+<a href="https://discord.com/users/1413433249518190622" target="_blank" class="staff-card">
+  <div class="avatar">
+    <img src="https://cdn.discordapp.com/avatars/1413433249518190622/b2962f80f8dc7e084870f8958630e04c.webp?size=1024" alt="Staff PFP">
+  </div>
+  <div class="staff-name">𝕹𝖎𝖐𝖔 (@niko.26)</div>
+  <div class="staff-role">
+    <i class="fas fa-crown"></i> Founder / 𝘼𝘾𝙍𝙋 | Board of Founders
+  </div>
+  <div class="staff-desc">
+    Oversees the entire operation and long-term direction.
+  </div>
+</a>
+
+<a href="https://discord.com/users/1387231152397352990" target="_blank" class="staff-card">
+  <div class="avatar">
+    <img src="https://cdn.discordapp.com/avatars/1387231152397352990/819b6259a7415bcf1feddafdfa91a145.png?size=1024" alt="Staff PFP">
+  </div>
+  <div class="staff-name">River (@theonerivermonster)</div>
+  <div class="staff-role">
+    <i class="fas fa-crown"></i> Founder / 𝘼𝘾𝙍𝙋 | Board of Founders
+  </div>
+  <div class="staff-desc">
+    Oversees the entire operation and long-term direction.
+  </div>
+</a>
+
+<a href="https://discord.com/users/1446143206273187924" target="_blank" class="staff-card">
+  <div class="avatar">
+    <img src="https://cdn.discordapp.com/avatars/1446143206273187924/062c02306d4e530e57ceedad6e83e731.webp?size=1024" alt="Staff PFP">
+  </div>
+  <div class="staff-name">ItssMrSkittles (@reapernevercaughtlakin123)</div>
+  <div class="staff-role">
+    <i class="fas fa-shield-alt"></i> Deputy Director / 𝘼𝘾𝙍𝙋 | Board Of Directors
+  </div>
+  <div class="staff-desc">
+    Manages staff teams and enforces policies.
+  </div>
+</a>
+
+<a href="https://discord.com/users/853879284083195904" target="_blank" class="staff-card">
+  <div class="avatar">
+    <img src="https://cdn.discordapp.com/avatars/853879284083195904/56663c01263bd06d9d47e1e46b3b4500.png?size=1024" alt="Staff PFP">
+  </div>
+  <div class="staff-name">Hamborgor (@butterfingers9782)</div>
+  <div class="staff-role">
+    <i class="fas fa-shield-alt"></i> Assistant Director / 𝘼𝘾𝙍𝙋 | Board Of Directors
+  </div>
+  <div class="staff-desc">
+    Manages staff teams and enforces policies.
+  </div>
+</a>
+
+<a href="https://discord.com/users/1030897968460607528" target="_blank" class="staff-card">
+  <div class="avatar">
+    <img src="https://cdn.discordapp.com/avatars/1030897968460607528/c2daf79e944bc5467985a2d7af1a6ae8.png?size=1024" alt="Staff PFP">
+  </div>
+  <div class="staff-name">|˜”*°• ᐯᗩᑎᒍKO •°*”˜| (@vanjko.)</div>
+  <div class="staff-role">
+    <i class="fas fa-code"></i> Developer
+  </div>
+  <div class="staff-desc">
+ Manages codes and develops the servers utilities
+  </div>
+</a>
+
+
+</section>
+
+<footer>
+  <p>© 2026 ACRP Atlanta City Roleplay ERLC</p>
+</footer>
+
+</body>
+</html>
